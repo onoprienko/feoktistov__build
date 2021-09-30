@@ -1,5 +1,12 @@
 // rellax
-var rellax = new Rellax('.rellax');
+var rellax
+const rellaxStart = ()=>{
+	rellax = new Rellax('.rellax',{
+    	speed: 1.3
+	});
+}
+rellaxStart()
+
 
 
 //AOS
@@ -11,22 +18,22 @@ AOS.init({
     });
 
 
+
 //B-lazy
-(function() {
-    var bLazy = new Blazy({
-    	loadInvisible: true,
-    	offset: 200,
-    	success: function(ele){
-    		//console.log(ele)
-            //AOS.refresh();
-            //rellax.refresh();
-            //onResize()
-        }
-    });
-})()
+var bLazy = new Blazy({
+	loadInvisible: true,
+	offset: 200,
+	success: function(ele){
+		//console.log(ele)
+        //AOS.refresh();
+        //rellax.refresh();
+        //onResize()
+    }
+});
+
+
 
 //gsap smooth page scroll
-
 var html = document.documentElement;
 var body = document.body;
 
@@ -95,3 +102,58 @@ function onResize() {
     requestId = requestAnimationFrame(updateScroller);
   }
 }
+
+
+
+
+//projects filter
+(function(){
+	const sortFilter = ()=>{
+		let projectItems = document.querySelectorAll('.section-projects .project-item');
+		let sort = [...projectItems].sort((a,b)=>{
+			if(a.classList.contains("displaynone")){
+				return 1
+			}
+			return -1
+		})
+		for (let i = 0; i < sort.length; i++) {
+			sort[i].classList.remove("rellax")
+			if (i%2 != 0){
+				sort[i].classList.add("rellax")
+			}
+			document.querySelector('.projects-holder').append(sort[i])
+		}
+	}
+
+	const projectFilter = (filter)=>{
+		let projectItems = document.querySelectorAll('.section-projects .project-item');
+		for(let element of projectItems){
+			if(element.getAttribute("data-tag").split(" ").find((item)=>item===filter)){
+				element.classList.remove("displaynone")
+			}else{
+				element.classList.add("displaynone")
+			}
+		}
+		sortFilter()	
+
+		setTimeout(()=>{
+			bLazy.revalidate()
+       		AOS.refresh();
+       		rellax.destroy();
+       		rellaxStart()
+        	onResize()	
+		},100)
+
+	}
+
+	let filterElements = document.querySelectorAll('.projects-filter nav a');
+	for(let element of filterElements){
+		element.addEventListener("click", (e)=>{
+			for(let element of filterElements){
+				element.classList.remove("active")
+			}
+			element.classList.add("active")
+			projectFilter(element.getAttribute("data-filter"))
+		});
+	}
+})()
