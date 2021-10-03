@@ -83,7 +83,6 @@ function onLoad() {
   document.addEventListener("scroll", onScroll); 
 }
 function updateScroller() {
-	console.log("updateScroller")
   var resized = scroller.resizeRequest > 0;
   if (resized) {    
     var height = scroller.target.clientHeight;
