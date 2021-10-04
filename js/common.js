@@ -54,14 +54,16 @@ var bLazy = new Blazy({
 //mediumZoom
 const zoom = mediumZoom('[data-zoomable]',{
 	margin: 0,
+	background: "rgba(255,255,255,0.8)"
 })
+
 zoom.on('close', (e) => {
 	document.querySelector(".medium-zoom-image--opened").classList.add("hide")
-	document.querySelector(".medium-zoom-image--hidden").classList.add("show")
+	//document.querySelector(".medium-zoom-image--hidden").classList.add("show")
 	document.querySelector(".medium-zoom-image--hidden").classList.remove("medium-zoom-image--hidden")
 }) 
 zoom.on('closed', (e) => {
-	document.querySelector(".show").classList.remove("show")	
+	//document.querySelector(".show").classList.remove("show")	
 }) 
 
 
