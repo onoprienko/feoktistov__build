@@ -17,6 +17,17 @@ const rellaxStartCenter = ()=>{
 }
 rellaxStartCenter()
 
+const rellaxResize = ()=>{
+	if(window.innerWidth<=992){
+	  	rellax.options ? rellax.destroy() : null
+	  	rellaxCenter.options ? rellaxCenter.destroy() : null
+	}else{
+	  	rellax.options ? rellax.refresh() : null
+	  	rellaxCenter.options ? rellaxCenter.refresh() : null
+	}	
+}
+rellaxResize()
+
 
 
 //AOS
@@ -33,14 +44,10 @@ AOS.init({
 var bLazy = new Blazy({
 	loadInvisible: true,
 	offset: 200,
-	success: function(ele){
-		//console.log(ele)
-        //AOS.refresh();
-        //rellax.refresh();
-        //onResize()
+	success: function(el){
+		//console.log(el)
     }
 });
-
 
 
 
@@ -112,6 +119,9 @@ function onResize() {
   if (!requestId) {
     requestId = requestAnimationFrame(updateScroller);
   }
+
+  rellaxResize()
+
 }
 
 
@@ -160,6 +170,7 @@ function onResize() {
 	let filterElements = document.querySelectorAll('.projects-filter nav a');
 	for(let element of filterElements){
 		element.addEventListener("click", (e)=>{
+			e.preventDefault
 			bLazy.load(document.querySelectorAll('.section-projects .project-item img'))
 			for(let element of filterElements){
 				element.classList.remove("active")
