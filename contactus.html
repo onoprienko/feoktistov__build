@@ -45,23 +45,23 @@
 				<div class="contactpage-holder">
 					<div class="info">
 						<p>Feoktistov Architects was founded in 2013. We work in the fields of industrial design, residential architecture, commercial interiors, photography and art direction.</p>
-						<a href="mailto:studio@feoktistovarchitects.com">studio@feoktistovarchitects.com</a>
+						<a class="a-line" href="mailto:studio@feoktistovarchitects.com">studio@feoktistovarchitects.com</a>
 						<div class="phone">
-							+38 (050) 401 86 61  &nbsp;|&nbsp;  Напишите нам в <a href="#">Telegram</a>
+							+38 (050) 401 86 61  &nbsp;|&nbsp;  Напишите нам в &nbsp;<a class="a-line" href="#">Telegram</a>
 						</div>
 						<span>Kharkiv. Ukraine</span>
 						<nav class="nav-social">
-							<a href="#">Instagram</a>
-							<a href="#">Pinterest</a>
-							<a href="#">Behance</a>
+							<a class="a-line" href="#">Instagram</a>
+							<a class="a-line" href="#">Pinterest</a>
+							<a class="a-line" href="#">Behance</a>
 						</nav>
 					</div>
 					<div class="form">
 						<form>
-							<p><input type="text" name="name" placeholder="Your Name"></p>
-							<p><input type="email" name="email" placeholder="Your Email"></p>
-							<p><textarea oninput="auto_grow(this)" placeholder="Message"></textarea></p>
-							<p><input type="submit" name="submit" value="Send"></p>
+							<p><input class="validate" type="text" name="name" placeholder="Your Name" required></p>
+							<p><input class="validate" type="email" name="email" placeholder="Your Email" required></p>
+							<p><textarea class="validate" oninput="auto_grow(this)" placeholder="Message" required></textarea></p>
+							<p><input class="validate-submit" type="submit" name="submit" value="Send" disabled></p>
 
 							<script>
 								function auto_grow(el){el.style.height=(el.scrollHeight)+'px';}
