@@ -68,7 +68,7 @@ zoom.on('close', (e) => {
 
 let infoTrigger = document.querySelector('.info-trigger')
 infoTrigger ? infoTrigger.addEventListener("click", (e)=>{
-	e.preventDefault
+	e.preventDefault()
 	infoTrigger.classList.toggle("open")
 	setTimeout(()=>{
    		AOS.refresh();
@@ -185,7 +185,7 @@ function onResize() {
 	let filterElements = document.querySelectorAll('.projects-filter nav a');
 	for(let element of filterElements){
 		element.addEventListener("click", (e)=>{
-			e.preventDefault
+			e.preventDefault()
 			bLazy.load(document.querySelectorAll('.section-projects .project-item img'))
 			for(let element of filterElements){
 				element.classList.remove("active")
@@ -218,3 +218,11 @@ for(let element of validateElements){
 	})
 }
 
+
+
+//main-nav-mobile
+
+document.querySelector('.main-nav-trigger').addEventListener("click", (e)=>{
+	e.preventDefault()
+	document.querySelector('.header-main').classList.toggle("opened")
+})
