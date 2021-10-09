@@ -120,7 +120,7 @@ for(let element of popperTrigger){
 	  document.addEventListener("scroll", onScroll); 
 	}
 	function updateScroller() {
-		if(window.innerWidth>=992){
+		if(window.innerWidth>=992 &&true===false){
 
 		  var resized = scroller.resizeRequest > 0;
 		  if (resized) {    
@@ -144,7 +144,7 @@ for(let element of popperTrigger){
 
 	}
 	function onScroll() {
-		if(window.innerWidth>=992){
+		if(window.innerWidth>=992 &&true===false){
 		  scroller.scrollRequest++;
 		  if (!requestId) {
 		    requestId = requestAnimationFrame(updateScroller);
@@ -152,7 +152,7 @@ for(let element of popperTrigger){
 		}
 	}
 	function onResize() {
-		if(window.innerWidth>=992){
+		if(window.innerWidth>=992 &&true===false){
 		  scroller.resizeRequest++;
 		  if (!requestId) {
 		    requestId = requestAnimationFrame(updateScroller);
