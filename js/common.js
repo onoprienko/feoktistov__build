@@ -94,10 +94,10 @@ infoTrigger ? infoTrigger.addEventListener("click", (e)=>{
 	  scrollRequest: 0,
 	};
 	var requestId = null;
-	TweenLite.set(scroller.target, {
-	  rotation: 0.01,
-	  force3D: true
-	});
+	// TweenLite.set(scroller.target, {
+	//   rotation: 0.01,
+	//   force3D: true
+	// });
 	window.addEventListener("load", onLoad);
 	function onLoad() {    
 	  updateScroller();  
