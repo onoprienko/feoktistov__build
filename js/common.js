@@ -79,6 +79,20 @@ infoTrigger ? infoTrigger.addEventListener("click", (e)=>{
 
 
 
+
+//popper
+
+let popperTrigger = document.querySelectorAll('.popper-trigger')
+
+for(let element of popperTrigger){
+
+		element ? element.addEventListener("click", (e)=>{
+			e.preventDefault()
+			element.classList.toggle("open")
+		}) : null;
+	}
+
+
 //gsap smooth page scroll
 
 
