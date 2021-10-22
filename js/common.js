@@ -31,23 +31,20 @@ rellaxResize()
 
 
 //AOS
-AOS.init({
-    offset: 200,
-    duration: 1000,
-    easing: 'ease-out',
-    delay: 100,
-  });
+// AOS.init({
+//     offset: 200,
+//     duration: 1000,
+//     easing: 'ease-out',
+//     delay: 100,
+//   });
 
 
 
 //B-lazy
-var bLazy = new Blazy({
-	loadInvisible: true,
-	offset: 200,
-	success: function(el){
-		//console.log(el)
-    }
-});
+// var bLazy = new Blazy({
+// 	loadInvisible: true,
+// 	offset: 200
+// });
 
 
 
@@ -58,8 +55,14 @@ const zoom = mediumZoom('[data-zoomable]',{
 })
 
 zoom.on('close', (e) => {
-	document.querySelector(".medium-zoom-image--opened").classList.add("hide")
-	document.querySelector(".medium-zoom-image--hidden").classList.remove("medium-zoom-image--hidden")
+	let opened = document.querySelectorAll(".medium-zoom-image--opened")
+	for(let opened_el of opened){
+		opened_el.classList.add("hide")
+	}
+	let hidden = document.querySelectorAll(".medium-zoom-image--hidden")
+	for(let hidden_el of hidden){
+		hidden.classList.remove("medium-zoom-image--hidden")
+	}
 }) 
 
 
@@ -71,7 +74,7 @@ infoTrigger ? infoTrigger.addEventListener("click", (e)=>{
 	e.preventDefault()
 	infoTrigger.classList.toggle("open")
 	setTimeout(()=>{
-   		AOS.refresh();
+   		//AOS.refresh();
     	onResize ? onResize() : null	
 	},300)
 }) : null;
@@ -120,7 +123,7 @@ for(let element of popperTrigger){
 	  document.addEventListener("scroll", onScroll); 
 	}
 	function updateScroller() {
-		if(window.innerWidth>=992){
+
 
 		  var resized = scroller.resizeRequest > 0;
 		  if (resized) {    
@@ -140,7 +143,7 @@ for(let element of popperTrigger){
 		  });
 		  requestId = scroller.scrollRequest > 0 ? requestAnimationFrame(updateScroller) : null;
 
-		}
+
 
 	}
 	function onScroll() {
@@ -200,7 +203,7 @@ for(let element of popperTrigger){
 
 		setTimeout(()=>{
 			
-       		AOS.refresh();
+       		//AOS.refresh();
        		rellax.destroy();
        		rellaxStart()
         	onResize ? onResize() : null	
@@ -212,7 +215,7 @@ for(let element of popperTrigger){
 	for(let element of filterElements){
 		element.addEventListener("click", (e)=>{
 			e.preventDefault()
-			bLazy.load(document.querySelectorAll('.section-projects .project-item img'))
+			//bLazy.load(document.querySelectorAll('.section-projects .project-item img'))
 			for(let element of filterElements){
 				element.classList.remove("active")
 			}
@@ -222,27 +225,6 @@ for(let element of popperTrigger){
 	}
 })()
 
-
-
-//form validation
-
-let validateElements = document.querySelectorAll('.validate');
-let validateButton = document.querySelector('.validate-submit')
-
-for(let element of validateElements){
-	element.addEventListener("input", (e)=>{
-		let valid = [...validateElements].reduce((ret, el)=>{
-			if(el.checkValidity() === false){
-				return false
-			}
-			if(ret === false){
-				return false
-			}
-			return true
-		}, true)
-		valid === false ? validateButton.setAttribute("disabled", "") : validateButton.removeAttribute("disabled")
-	})
-}
 
 
 

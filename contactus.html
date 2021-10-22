@@ -66,6 +66,27 @@
 
 							<script>
 								function auto_grow(el){el.style.height=(el.scrollHeight)+'px';}
+
+
+								//form validation
+
+								let validateElements = document.querySelectorAll('.validate');
+								let validateButton = document.querySelector('.validate-submit')
+
+								for(let element of validateElements){
+									element.addEventListener("input", (e)=>{
+										let valid = [...validateElements].reduce((ret, el)=>{
+											if(el.checkValidity() === false){
+												return false
+											}
+											if(ret === false){
+												return false
+											}
+											return true
+										}, true)
+										valid === false ? validateButton.setAttribute("disabled", "") : validateButton.removeAttribute("disabled")
+									})
+								}
 							</script>
 						</form>
 					</div>
